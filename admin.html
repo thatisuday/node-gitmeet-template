@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="gitmeet">
+	<head>
+		<base href="/"/>
+		<title>GitMeet : Admin</title>
+		<meta name="robots" content="nofollow, noindex"/>
+
+		<link rel="icon" href="/assets/img/logos/favicon.ico"/>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Passion+One:400,700,900' rel='stylesheet' type='text/css'>
+
+		<script src="/bower/angular/angular.min.js"></script>
+		<script src="/bower/angular-animate/angular-animate.min.js"></script>
+		<script src="/bower/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="/bower/ui-stater/dist/ui-stater.min.js"></script>
+		<script src="/bower/jquery/dist/jquery.min.js"></script>
+		<script src="/bower/semantic/dist/semantic.min.js"></script>
+		<link rel="stylesheet" href="/bower/semantic/dist/semantic.min.css">
+		<link rel="stylesheet" href="/bower/css-sets/dist/sets.min.css">
+	</head>
+	
+	<body ng-controller="home">
+		<div class="ui container">
+			<div ui-view ui-stater></div>
+		</div>
+	</body>
+</html>

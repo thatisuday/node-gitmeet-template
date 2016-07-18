@@ -1,0 +1,1 @@
+module.exports = exports = ['frontend', 'backend', 'efficiency', 'news'];

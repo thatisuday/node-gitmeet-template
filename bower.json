@@ -1,0 +1,31 @@
+{
+  "name": "gitmeet-template",
+  "description": "Simple plug-n-play markdown blog website for node.js",
+  "main": "index.js",
+  "authors": [
+    "Uday Hiwarale <uhiwarale@gmail.com> (https://github.com/thatisuday)"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/thatisuday/gitmeet-template",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-ui-router": "^0.3.1",
+    "angular-animate": "^1.5.7",
+    "semantic": "semantic-ui#^2.2.2",
+    "ui-stater": "^1.0.0",
+    "css-sets": "^0.0.5",
+    "bower": "*",
+    "install": "^1.0.4",
+    "angular-md": "^1.0.0",
+    "angular-timeago": "^0.4.3",
+    "lodash": "^4.13.1",
+    "angular-disqus": "^1.1.0"
+  }
+}
