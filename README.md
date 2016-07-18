@@ -12,7 +12,7 @@ Simple plug-n-play markdown blog website for node.js
 --
 
 # Install and configure
-- copy latest release of this repo (download and extract .zip file)
+- copy latest release of this repo (download and extract .zip file) | `git clone https://github.com/thatisuday/gitmeet-template.git`
 - open cmd/terminal and run `npm install --production`
 - open cmd/terminal and run `bower install` (install bower `npm install -g bower`) 
 - edit `index.html` file in your parent directory.
