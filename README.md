@@ -1,4 +1,4 @@
-# GitMeet-template ![](https://travis-ci.org/thatisuday/gitmeet-template.svg?branch=master)
+# GitMeet-template [![build status](https://travis-ci.org/thatisuday/gitmeet-template.svg?branch=master)](https://travis-ci.org/thatisuday/gitmeet-template)
 Simple plug-n-play markdown blog website for node.js
 
 > This template was created for my personal blog at [gitmeet.com](http://gitmeet.com). But due to it's portability and markdown writing format, I guess this help you set up your personal blog within 5 mins.
