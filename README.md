@@ -24,6 +24,10 @@ Simple plug-n-play markdown blog website for node.js
 - **edit** post from `/admin/edit-post/post-id`. Post id is string followed by `/post/` in url of your post.
 - **delete** post by clicking delete button on **edit** page.
 
+> You should run `web-server.js` using `forever` as you want to run this website forever.
+> - `npm install -g forever`
+> - `forever start web-server.js`
+
 --
 
 # build
