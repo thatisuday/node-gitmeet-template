@@ -47,5 +47,4 @@ app.get('/*', function(req, res){
 
 app.listen(8881, function(){
     console.log('gitmeet template server is listening on 8881 port...');
-    require("openurl").open("http://127.0.0.1:8881")
 });
