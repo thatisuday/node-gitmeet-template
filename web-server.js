@@ -44,7 +44,7 @@ app.get('/*', function(req, res){
 
 /*******************************************************************/
 
-
-app.listen(8881, function(){
+var server;
+module.exports = server = app.listen(8881, function(){
     console.log('gitmeet template server is listening on 8881 port...');
 });

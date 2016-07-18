@@ -4,7 +4,7 @@
   "description": "Simple plug-n-play markdown blog website for node.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "async": "^2.0.0",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
     "express": "^4.14.0",
     "lodash": "^4.13.1",
     "mongoose": "^4.5.4",
