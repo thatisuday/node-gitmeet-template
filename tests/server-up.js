@@ -1,4 +1,4 @@
-var webServer = require('./web-server');
+var webServer = require('../web-server');
 var expect = require('chai').expect;
 var http = require('http');
 

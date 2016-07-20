@@ -1,7 +1,9 @@
 const
     express     	=     require('express'),
     mongoose    	=     require('mongoose'),
-    bodyParser    	=     require('body-parser')
+    bodyParser    	=     require('body-parser'),
+    _    			=     require('lodash'),
+    sm    			=     require('sitemap')
 ;
 
 // Create express app
@@ -32,12 +34,43 @@ app.use('/templates', express.static(__dirname + '/templates'), function(req, re
 });
 
 
-// Mini routers
+// API
 app.use('/api', require(__dirname + '/api/routes'));
 
 
-// Web routes
-app.get('/*', function(req, res){
+// Sitemap
+var postModel = require('./api/schemas/post');
+app.get('/sitemap.xml', function(req, res){
+    postModel
+    .find()
+    .select('postId -_id')
+    .exec(function(err, docs){
+        if(err) return res.status(500).send(err);
+        
+        var urls  = _.map(docs, function(doc){
+        	return {
+        		url : '/post/' + doc.postId,
+        		changefreq: 'weekly',
+        		priority: 0.7
+        	};
+        });
+
+        // create sitemap
+        var hostname = 'http://gitmeet.com'; // change with your hostname
+        var sitemap = sm.createSitemap({
+        	hostname : hostname,
+        	cacheTime : 600000,
+        	urls : urls
+        });
+
+        res.set('Content-Type', 'application/xml');
+        return res.send(sitemap.toString());
+    });
+});
+
+
+// HTML
+app.get('*', function(req, res){
     res.sendFile(__dirname + '/index.html');
 });
 

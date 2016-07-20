@@ -695,3 +695,6 @@ html h1, html h2, html h3, html h4, html h5, html p, html div, html span, body h
   .site-footer .item {
     font-size: 12px !important;
     font-weight: 500; }
+  .site-footer .right.floated .item {
+    color: #ccc;
+    font-weight: 300; }

@@ -4,7 +4,7 @@
   "description": "Simple plug-n-play markdown blog website for node.js",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test.js"
+    "test": "mocha tests/server-up.js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "multer": "^1.1.0",
     "openurl": "^1.1.1",
     "randomstring": "^1.1.5",
+    "sitemap": "^1.8.0",
     "time-ago": "^0.1.0"
   }
 }

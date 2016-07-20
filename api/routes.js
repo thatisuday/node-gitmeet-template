@@ -32,10 +32,15 @@ var checkAdmin = function(req, res, next){
 	});	
 }
 
+
+/**********************************************************/
+
+
 // Check if admin is signed in
 router.get('/admin/check-session', checkAdmin, function(req, res){
     res.sendStatus(200);
 });
+
 
 // Get access token
 router.post('/admin/signin', function(req, res){
@@ -127,6 +132,7 @@ router.get('/post/:postId', function(req, res){
     })
     .exec(function(err, doc){
     	if(err) return res.status(500).send(err);
+        if(_.isEmpty(doc)) return res.sendStatus(404);
     	return res.json(doc);
     });
 });

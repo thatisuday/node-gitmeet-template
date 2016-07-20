@@ -30,7 +30,7 @@ Simple plug-n-play markdown blog website for node.js
 
 --
 
-# build
+# Build
 -  open cmd/terminal 
 -  run `npm install` to install npm dependencies.
 -  install gulp globally `npm install -g gulp`
@@ -45,7 +45,14 @@ Simple plug-n-play markdown blog website for node.js
 
 -- 
 
-# bug reports and contributions
+# Sitemap
+Sitemap for the website will be automatically generated using `sitemap` module for node.js and will be available in `xml` format at `hostname/sitemap.xml`.
+
+> Please edit `hostname` in **web-server.js** to customize your sitemap urls.
+
+-- 
+
+# Bug reports and contributions
 - If you face any problems, create a github issue or email me on `uhiwarale@gmail.com`
 - If you make any improvements or optimization, please share with us all by giving a PR.
 - If you want to use it for commercial purpose, please take permission first.

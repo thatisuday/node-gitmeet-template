@@ -32,10 +32,13 @@ angular
         .state('post', {
             url : '/post/:postId',
             controller : 'post',
-            templateUrl : '/templates/post.html',resolve : {
-                _postData : ['$stateParams', '$http', function($stateParams, $http){
+            templateUrl : '/templates/post.html',
+            resolve : {
+                _postData : ['$stateParams', '$http', '$state', function($stateParams, $http, $state){
                     return $http.get('/api/post/' + $stateParams.postId).then(function(res){
                         return res.data;
+                    }, function(){
+                        return $state.go('home');
                     });
                 }]
             }
