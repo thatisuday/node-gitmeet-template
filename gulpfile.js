@@ -6,38 +6,40 @@ var
 	sass 			= 		require('gulp-sass'),	
 	autoprefixer 	= 		require('gulp-autoprefixer'),	
 	uglify 			= 		require('gulp-uglify'),	
-	sourcemaps 		= 		require('gulp-sourcemaps')
+	sourcemaps 		= 		require('gulp-sourcemaps'),
+	htmlmin			=		require('gulp-htmlmin')
 ;
 
 
 // Build JavaScript
 gulp.task('buildJS', function(){
 	gulp
-	.src('assets/js/src/app/**/*.js')
+	.src(['copyrights.cmt', 'assets/js/src/app/**/*.js'])
 	.pipe(concat('app.js'))
 	.pipe(sourcemaps.init())
 	.pipe(gulp.dest('assets/js/dist'))
 	.pipe(rename({suffix:'.min'}))
-	.pipe(uglify())
+	.pipe(uglify({preserveComments:'license'}))
 	.pipe(sourcemaps.write('./'))
 	.pipe(gulp.dest('assets/js/dist'));
 
 
 	gulp
-	.src('assets/js/src/ctrl/**/*.js')
+	.src(['copyrights.cmt', 'assets/js/src/ctrl/**/*.js'])
 	.pipe(concat('ctrl.js'))
 	.pipe(sourcemaps.init())
 	.pipe(gulp.dest('assets/js/dist'))
 	.pipe(rename({suffix:'.min'}))
-	.pipe(uglify())
+	.pipe(uglify({preserveComments:'license'}))
 	.pipe(sourcemaps.write('./'))
 	.pipe(gulp.dest('assets/js/dist'));
 });
 
+
 // Build SASS
 gulp.task('buildSASS', function(){
 	gulp
-	.src('assets/sass/src/**/*.scss')
+	.src(['copyrights.cmt', 'assets/sass/src/**/*.scss'])
 	.pipe(sass().on('error', sass.logError))
 	.pipe(concat('main.css'))
 	.pipe(autoprefixer())
@@ -49,11 +51,29 @@ gulp.task('buildSASS', function(){
 	.pipe(gulp.dest('assets/sass/dist'))
 });
 
+
+// Build HTML
+gulp.task('buildHTML', function(){
+	gulp
+	.src('index.html')
+	.pipe(htmlmin({collapseWhitespace: true, removeComments:true}))
+	.pipe(rename({suffix:'.min'}))
+	.pipe(gulp.dest('./'));
+
+	gulp
+	.src('templates/__unmin/**/*.html')
+	.pipe(htmlmin({collapseWhitespace: true, removeComments:true}))
+	.pipe(gulp.dest('templates'));
+});
+
+
 // Build all
-gulp.task('build', ['buildJS', 'buildSASS']);
+gulp.task('build', ['buildJS', 'buildSASS', 'buildHTML']);
+
 
 // Watch all
 gulp.task('watch', ['build'], function(){
 	gulp.watch('assets/js/src/**/*.js', ['buildJS']);
 	gulp.watch('assets/sass/src/**/*.scss', ['buildSASS']);
+	gulp.watch(['index.html', 'templates/__unmin/**/*.html'], ['buildHTML']);
 });

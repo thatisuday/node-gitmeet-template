@@ -71,7 +71,7 @@ app.get('/sitemap.xml', function(req, res){
 
 // HTML
 app.get('*', function(req, res){
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.min.html');
 });
 
 

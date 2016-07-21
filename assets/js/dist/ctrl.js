@@ -1,3 +1,12 @@
+/*!
+ *	@author      Uday Hiwarale <uday hiwarale@gmail.com>
+ *	@profile     https://github.com/thatisuday
+ *	@link        http://gitmeet.com
+ * 	@version     1.0.1
+ * 	@license     MIT License, http://www.opensource.org/licenses/MIT
+**/
+
+
 angular
 .module('gitmeet')
 .controller('admin-add-post', ['$scope', '$http', '$state', '$location', '$timeout', function($scope, $http, $state, $location, $timeout){
@@ -123,6 +132,17 @@ angular
 }]);
 angular
 .module('gitmeet')
+.controller('home', ['$scope', '$location', function($scope, $location){
+	
+	// Open search dialog
+	// and redirect user to search page
+	$scope.openSearch = function(){
+		var query = prompt('What do you want to search?', 'type here...');
+		$location.url('/search/' + query);
+	}
+}]);
+angular
+.module('gitmeet')
 .controller('post', ['_postData', '$scope', '$http', function(_postData, $scope, $http){
 	// store post data
 	$scope.postData = _postData;
@@ -135,7 +155,7 @@ angular
 		url : '/api/posts',
 		method : 'GET',
 		params : {
-			ignore : _postData.postId,
+			nPostId : _postData.postId,
 			tags : _postData.tags,
 			limit : 6
 		}
@@ -161,9 +181,19 @@ angular
 		limit : 10,
 	}
 
-	// if category page, add category to request
+	// if category page, add category to the request
 	if(_.has($stateParams, 'category')){
 		$scope.params.category = $stateParams.category;
+	}
+
+	// if tag page, add tags to the request
+	if(_.has($stateParams, 'tag')){
+		$scope.params.tags = $stateParams.tag;
+	}
+
+	// if search page, add search to the request
+	if(_.has($stateParams, 'search')){
+		$scope.params.search = $stateParams.search;
 	}
 
 	// post loader ajax function

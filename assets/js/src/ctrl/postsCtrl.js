@@ -15,9 +15,19 @@ angular
 		limit : 10,
 	}
 
-	// if category page, add category to request
+	// if category page, add category to the request
 	if(_.has($stateParams, 'category')){
 		$scope.params.category = $stateParams.category;
+	}
+
+	// if tag page, add tags to the request
+	if(_.has($stateParams, 'tag')){
+		$scope.params.tags = $stateParams.tag;
+	}
+
+	// if search page, add search to the request
+	if(_.has($stateParams, 'search')){
+		$scope.params.search = $stateParams.search;
 	}
 
 	// post loader ajax function

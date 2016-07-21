@@ -12,7 +12,7 @@ angular
 		url : '/api/posts',
 		method : 'GET',
 		params : {
-			ignore : _postData.postId,
+			nPostId : _postData.postId,
 			tags : _postData.tags,
 			limit : 6
 		}

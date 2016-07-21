@@ -1,7 +1,14 @@
-// create GitMeet module
+// Create gitmeet module
 angular.module(
     'gitmeet',
-    ['ngAnimate', 'ui.router', 'yaru22.md', 'yaru22.angular-timeago', 'thatisuday.ui-stater', 'ngDisqus']
+    [
+        'ngAnimate',
+        'ui.router',
+        'yaru22.md',
+        'yaru22.angular-timeago',
+        'thatisuday.ui-stater',
+        'ngDisqus'
+    ]
 );
 
 // Configure dependencies
@@ -29,13 +36,27 @@ angular
             controller : 'posts',
             templateUrl : '/templates/posts.html'
         })
+        .state('tag', {
+            url : '/tag/:tag',
+            controller : 'posts',
+            templateUrl : '/templates/posts.html'
+        })
+        .state('search', {
+            url : '/search/:search',
+            controller : 'posts',
+            templateUrl : '/templates/posts.html'
+        })
         .state('post', {
             url : '/post/:postId',
             controller : 'post',
             templateUrl : '/templates/post.html',
             resolve : {
-                _postData : ['$stateParams', '$http', '$state', function($stateParams, $http, $state){
+                _postData : ['$stateParams', '$http', '$state', '$timeout', '$window', function($stateParams, $http, $state, $timeout, $window){
                     return $http.get('/api/post/' + $stateParams.postId).then(function(res){
+                        $timeout(function(){
+                            $window.scroll(0, 0);
+                        });
+
                         return res.data;
                     }, function(){
                         return $state.go('home');

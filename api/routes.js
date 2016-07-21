@@ -140,15 +140,57 @@ router.get('/post/:postId', function(req, res){
 
 // Get multiple posts
 router.get('/posts', function(req, res){
-	var query = _.pick(req.query, ['postId', 'category', 'tags']);
-	$query = _.mapValues(query, function(val, key){
-		if(key == 'tags') return {$in : _.map(_.split(val, ','), _.trim)};
-		return val;
-	});
+    
+    // Pick acceptable value from query string params
+    var query = _.pick(req.query, ['postId', 'nPostId', 'category', 'tags', 'search']);
+    
+    // Change values based on key
+    $query = _.mapValues(query, function(val, key){
+        // ignore a postId
+        if(key == 'nPostId') return {
+			$ne : val
+        };
 
+        // match by tags in array
+        if(key == 'tags'){
+        	// if tags given in string,
+        	// split by comma into array
+        	if(_.isString(val)){
+        		return {
+		            $in : _.split(val, ',')
+		        };
+        	}
+
+        	return {
+	            $in : val
+	        };
+        }
+
+        // match by search term
+        if(key == 'search') return [
+            {title : new RegExp(val, 'i')},
+            {description : new RegExp(val, 'i')},
+            {tags : {$in : [new RegExp(val, 'i')]}}
+        ];
+        
+        return val;
+    });
+
+
+    // Change keys
+    $query = _.mapKeys($query, function(val, key){
+        if(key == 'nPostId') return 'postId';
+        if(key == 'search') return '$or';
+        return key;
+    });
+
+
+    // skip & limit
     var skip = _.toInteger(req.query.skip) || 0;
     var limit = _.toInteger(req.query.limit) || 20;
 
+
+    // perform db query
     postModel
     .find($query)
     .sort({createdAt : -1})
@@ -156,8 +198,8 @@ router.get('/posts', function(req, res){
     .limit(limit)
     .select('-content')
     .exec(function(err, docs){
-    	if(err) return res.status(500).send(err);
-    	return res.json(docs);
+        if(err) return res.status(500).send(err);
+        return res.json(docs);
     });
 });
 

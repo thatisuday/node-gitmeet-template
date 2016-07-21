@@ -4,6 +4,7 @@
 		<base href="/"/>
 		<title>GitMeet - web essentials : from frontend to backend.</title>
 		<meta name="description" content="Awesome tech blog for web developers. Thorough tutorial on some of the issential web frameworks and dependencies.">
+		<meta name="google-site-verification" content="qgQmziutxfXGi6xYvZ3nw6JnfNyY7MDpVCnETm120TQ" />
 
 		<link rel="icon" href="/assets/img/logos/favicon.ico"/>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -32,7 +33,7 @@
 		<link rel="stylesheet" href="/assets/sass/dist/main.min.css">
 	</head>
 	
-	<body>
+	<body ng-controller="home">
 		<div class="ui container">
 			<div class="site-header">
 				<p class="logo-title">GitMeet</p>
@@ -54,6 +55,9 @@
 					<a href="/category/news" class="item">
 						news
 					</a>
+					<a ng-click="openSearch();" class="icon item">
+						<i class="icon search"></i>
+					</a>
 					<a href="/about-me" class="item">
 						me
 					</a>
@@ -66,8 +70,8 @@
 			<!-- footer -->
 			<div class="site-footer">
 				<div class="ui right floated horizontal list">
-					<a href="https://github.com/thatisuday" target="_blank" class="item" href="#">
-						&copy; Uday Hiwarale
+					<a href="https://github.com/thatisuday/gitmeet-template" target="_blank" class="item" href="#">
+						💗 GitMeet Template
 					</a>
 				</div>
 				<div class="ui horizontal list">
