@@ -11,9 +11,7 @@ angular
     	})
     	.then(function(res){
     		window.localStorage.setItem('authToken', res.data);
-    		$timeout(function(){
-                $state.go('admin-add-post');
-            }, 1000);
+    		window.location.reload();
     	},
     	function(err){
     		if(err.status == 500) return alert(err.data);

@@ -12,12 +12,10 @@ Simple plug-n-play markdown blog website for node.js
 --
 
 # Install and configure
-- copy latest release of this repo (download and extract .zip file) | `git clone https://github.com/thatisuday/gitmeet-template.git`
-- open cmd/terminal and run `npm install --production`
+- copy latest release of this repo (download and extract .zip file) | `git clone https://github.com/thatisuday/gitmeet-template.git` | `npm install gitmeet-template`
+- open cmd/terminal and run `npm install`
 - open cmd/terminal and run `bower install` (install bower `npm install -g bower`) 
-- edit `index.html` file in your parent directory.
-- edit `about.html` from `/templates/`
-- edit `createAdmin.js` file from `/api\__once`. Set appropriate credentials. Run this file with node (`node createAdmins.js`). This will create admin document in mongodb to create and manage your posts.
+- edit `createAdmin.js` file from `/api/__once`. Set appropriate credentials. Run this file with node (`node createAdmins.js`). This will create admin document in mongodb to create and manage your posts.
 - run `web-server.js` file from parent directory with node. This will start http server at port 8881.
 - **sign in** from `/admin/signin`
 - **add** post from `/admin/add-post`
@@ -30,9 +28,11 @@ Simple plug-n-play markdown blog website for node.js
 
 --
 
-# Build
+# Customize / Build
+-  edit `index.html`
+-  edit files in `templates/__unmin`
+-  edit menu tabs in `api/constants`
 -  open cmd/terminal 
--  run `npm install` to install npm dependencies.
 -  install gulp globally `npm install -g gulp`
 -  build using `gulp build` command.
 

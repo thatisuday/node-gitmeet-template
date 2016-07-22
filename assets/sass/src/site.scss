@@ -30,6 +30,9 @@
 
 	.ui.menu{
 		margin-top: 10px;
+	    max-width: 100%;
+	    overflow-x: auto;
+	    overflow-y: hidden;
 
 		.item{
 			border-radius: 0px !important;

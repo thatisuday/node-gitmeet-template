@@ -1,4 +1,4 @@
-<div class="ui grid">
+<div class="ui stackable grid">
     <div class="twelve wide column">
         <div class="ui items posts">
             <div class="item">
@@ -15,7 +15,7 @@
 
                     <div class="extra">
                         <div class="post-tags">
-                            <a href="/tag/{{tag}}" ng-repeat="tag in postData.tags" class="ui small label">
+                            <a href="/tag/{{tag}}" ng-repeat="tag in postData.tags track by $index" class="ui small label">
                                 {{tag}}
                             </a>
                         </div>

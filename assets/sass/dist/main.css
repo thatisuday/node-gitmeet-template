@@ -608,7 +608,10 @@ html h1, html h2, html h3, html h4, html h5, html p, html div, html span, body h
     font-weight: 100;
     margin: 0px; }
   .site-header .ui.menu {
-    margin-top: 10px; }
+    margin-top: 10px;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden; }
     .site-header .ui.menu .item {
       border-radius: 0px !important;
       font-family: "Passion One", cursive !important;

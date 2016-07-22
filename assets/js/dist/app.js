@@ -80,7 +80,14 @@ angular
         .state('admin-signin', {
             url : '/admin/signin',
             controller : 'admin-signin',
-            templateUrl : '/templates/admin/signin.html'
+            templateUrl : '/templates/admin/signin.html',
+            resolve : {
+                _admin : ['$auth', '$state', function($auth, $state){
+                    return $auth.then(function(){
+                        return $state.go('admin-add-post');
+                    }, angular.noop);
+                }]
+            }
         })
         .state('admin-add-post', {
             url : '/admin/add-post',

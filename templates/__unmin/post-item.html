@@ -8,7 +8,7 @@
         {{post.description}}
     </div>
     <div class="extra">
-        <span ng-repeat="tag in post.tags" class="ui mini label">
+        <span ng-repeat="tag in post.tags track by $index" class="ui mini label">
             {{tag}}
         </span>
     </div>
