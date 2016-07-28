@@ -2,8 +2,11 @@
 <html ng-app="gitmeet">
 	<head>
 		<base href="/"/>
-		<title>GitMeet - web essentials : from frontend to backend.</title>
-		<meta name="description" content="Awesome tech blog for web developers. Thorough tutorial on some of the issential web frameworks and dependencies.">
+		
+		<title ng-bind="MetaTags.title">GitMeet</title>
+		<meta name="description" content="{{MetaTags.description}}">
+		<meta name="keywords" content="{{MetaTags.keywords}}">
+		
 		<meta name="google-site-verification" content="qgQmziutxfXGi6xYvZ3nw6JnfNyY7MDpVCnETm120TQ" />
 
 		<link rel="icon" href="/assets/img/logos/favicon.ico"/>
@@ -23,6 +26,7 @@
 		<script src="/bower/angular-md/dist/angular-md.js"></script>
 		<script src="/bower/angular-timeago/dist/angular-timeago.min.js"></script>
 		<script src="/bower/angular-disqus/angular-disqus.min.js"></script>
+		<script src="/bower/ui-router-metatags/dist/ui-router-metatags.min.js"></script>
 
 		<link rel="stylesheet" href="/bower/semantic/dist/semantic.min.css">
 

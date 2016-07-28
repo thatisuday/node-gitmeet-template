@@ -7,7 +7,8 @@ angular.module(
         'yaru22.md',
         'yaru22.angular-timeago',
         'thatisuday.ui-stater',
-        'ngDisqus'
+        'ngDisqus',
+        'ui.router.metatags'
     ]
 );
 
@@ -15,13 +16,23 @@ angular.module(
 angular
 .module('gitmeet')
 .config(
-    ['$locationProvider', '$urlRouterProvider', '$stateProvider', '$disqusProvider',
-    function($locationProvider, $urlRouterProvider, $stateProvider, $disqusProvider){
+    ['$locationProvider', '$urlRouterProvider', '$stateProvider', '$disqusProvider', 'UIRouterMetatagsProvider',
+    function($locationProvider, $urlRouterProvider, $stateProvider, $disqusProvider, UIRouterMetatagsProvider){
 
         //disqus
         $disqusProvider.setShortname('gitmeet');
 
-        // ui-router
+
+        // ui-router meta tags
+        UIRouterMetatagsProvider
+        .setTitleSuffix(' | GitMeet - web essentials__ from frontend to backend')
+        .setDefaultTitle('GitMeet - web essentials__ from frontend to backend')
+        .setDefaultDescription('All web development essential topics and discussions. html, css, javascript, node.js, angular, jQuery, sass, typescript, mongodb, continuous integration, mocha & chai, gulp and more.')
+        .setDefaultKeywords('html, css, javascript, node.js, angular, jQuery, sass, typescript, mongodb, continuous integration, mocha & chai, gulp')
+        ;
+
+
+        // ui-router states
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
 
@@ -29,22 +40,40 @@ angular
         .state('home', {
             url : '/',
             controller : 'posts',
-            templateUrl : '/templates/posts.html'
+            templateUrl : '/templates/posts.html',
+            metaTags : {
+                
+            }
         })
         .state('category', {
             url : '/category/:category',
             controller : 'posts',
-            templateUrl : '/templates/posts.html'
+            templateUrl : '/templates/posts.html',
+            metaTags : {
+                title : ['$stateParams', function($stateParams){
+                    return _.upperFirst($stateParams.category);
+                }]
+            }
         })
         .state('tag', {
             url : '/tag/:tag',
             controller : 'posts',
-            templateUrl : '/templates/posts.html'
+            templateUrl : '/templates/posts.html',
+            metaTags : {
+                title : ['$stateParams', function($stateParams){
+                    return $stateParams.tag;
+                }]
+            }
         })
         .state('search', {
             url : '/search/:search',
             controller : 'posts',
-            templateUrl : '/templates/posts.html'
+            templateUrl : '/templates/posts.html',
+            metaTags : {
+                title : ['$stateParams', function($stateParams){
+                    return $stateParams.search;
+                }]
+            }
         })
         .state('post', {
             url : '/post/:postId',
@@ -62,11 +91,26 @@ angular
                         return $state.go('home');
                     });
                 }]
+            },
+            metaTags : {
+                title : ['_postData', function(_postData){
+                    return _postData.title;
+                }],
+                description : ['_postData', function(_postData){
+                    return _postData.description;
+                }],
+                keywords : ['_postData', function(_postData){
+                    return _postData.tags.join(',');
+                }]
             }
         })
         .state('about', {
             url : '/about-me',
-            templateUrl : '/templates/about.html'
+            templateUrl : '/templates/about.html',
+            metaTags : {
+                title : 'Uday Hiwarale',
+                description : 'Today, I work with small team to help people build their dream homes through an online platform \'ArchiBiz\'. It\'s still under development phase. I try to learn everyday and contribute back to the community at \'www.github.com/thatisuday\'. I am just a beginner and I wish to know more everyday. I follow Linus Torvalds very closely and one day believe to become technology philanthropist like him.'
+            }
         })
         .state('admin-signin', {
             url : '/admin/signin',
@@ -134,10 +178,14 @@ angular
 }]);
 
 
-// Add categories to $rootScope
+// App run block
 angular
 .module('gitmeet')
-.run(['$rootScope', '$http', function($rootScope, $http){
+.run(['$rootScope', '$http', 'MetaTags', function($rootScope, $http, MetaTags){
+    // ui-router meta tags
+    $rootScope.MetaTags = MetaTags;
+
+    // Add categories to $rootScope
     $http.get('/api/categories').then(function(res){
         $rootScope.categories = res.data;
     });
