@@ -7,6 +7,7 @@ const
 ;
 
 var router = express.Router();
+var categories = require('./constants/categories');
 var postModel = require('./schemas/post');
 var adminModel = require('./schemas/admin');
 
@@ -123,6 +124,11 @@ router.delete('/admin/post/:postId', checkAdmin, function(req, res){
 
 /**********************************************************/
 
+
+// Router
+router.get('/categories', function(req, res){
+    res.json(categories);
+});
 
 // Get a post
 router.get('/post/:postId', function(req, res){

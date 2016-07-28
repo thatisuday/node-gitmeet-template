@@ -1,6 +1,6 @@
 {
   "name": "gitmeet-template",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple plug-n-play markdown blog website for node.js",
   "main": "index.js",
   "scripts": {

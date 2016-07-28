@@ -22,10 +22,9 @@
 		<div class="field">
 			<label>Post category</label>
 			<select ng-model="postData.category" required="">
-				<option value="frontend">frontend</option>
-				<option value="backend">backend</option>
-				<option value="efficiency">efficiency</option>
-				<option value="news">news</option>
+				<option ng-repeat="category in categories" value="{{category}}">
+					{{category}}
+				</option>
 			</select>
 		</div>
 

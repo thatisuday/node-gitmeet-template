@@ -43,18 +43,11 @@
 					<a href="/" class="item">
 						home
 					</a>
-					<a href="/category/frontend" class="item">
-						frontend
+					
+					<a ng-repeat="category in categories" href="/category/{{category}}" class="item">
+						{{category}}
 					</a>
-					<a href="/category/backend" class="item">
-						backend
-					</a>
-					<a href="/category/efficiency" class="item">
-						efficiency
-					</a>
-					<a href="/category/news" class="item">
-						news
-					</a>
+
 					<a ng-click="openSearch();" class="icon item">
 						<i class="icon search"></i>
 					</a>

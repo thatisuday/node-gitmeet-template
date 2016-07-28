@@ -1,1 +1,1 @@
-module.exports = exports = ['frontend', 'backend', 'efficiency', 'news'];
+module.exports = exports = ['frontend', 'backend', 'efficiency', 'life'];

@@ -1,6 +1,8 @@
 angular
 .module('gitmeet')
-.controller('admin-edit-post', ['_postData', '$scope', '$http', '$state', '$location', '$timeout', function(_postData, $scope, $http, $state, $location, $timeout){
+.controller('admin-edit-post',
+    ['_postData', '$scope', '$http', '$state', '$location', '$timeout',
+    function(_postData, $scope, $http, $state, $location, $timeout){
    
     $scope.postData = _postData;
     $scope.isEdit = true;

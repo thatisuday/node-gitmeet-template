@@ -9,7 +9,10 @@
 
 angular
 .module('gitmeet')
-.controller('admin-add-post', ['$scope', '$http', '$state', '$location', '$timeout', function($scope, $http, $state, $location, $timeout){
+.controller('admin-add-post',
+    ['$scope', '$http', '$state', '$location', '$timeout',
+    function($scope, $http, $state, $location, $timeout){
+    
     $scope.postData = {
         content : "#Hello World!" 
     };
@@ -46,7 +49,9 @@ angular
 }]);
 angular
 .module('gitmeet')
-.controller('admin-edit-post', ['_postData', '$scope', '$http', '$state', '$location', '$timeout', function(_postData, $scope, $http, $state, $location, $timeout){
+.controller('admin-edit-post',
+    ['_postData', '$scope', '$http', '$state', '$location', '$timeout',
+    function(_postData, $scope, $http, $state, $location, $timeout){
    
     $scope.postData = _postData;
     $scope.isEdit = true;

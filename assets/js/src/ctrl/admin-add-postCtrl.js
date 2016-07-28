@@ -1,6 +1,9 @@
 angular
 .module('gitmeet')
-.controller('admin-add-post', ['$scope', '$http', '$state', '$location', '$timeout', function($scope, $http, $state, $location, $timeout){
+.controller('admin-add-post',
+    ['$scope', '$http', '$state', '$location', '$timeout',
+    function($scope, $http, $state, $location, $timeout){
+    
     $scope.postData = {
         content : "#Hello World!" 
     };

@@ -92,14 +92,7 @@ angular
         .state('admin-add-post', {
             url : '/admin/add-post',
             controller : 'admin-add-post',
-            templateUrl : '/templates/admin/post.html',
-            resolve : {
-                _admin : ['$auth', '$state', function($auth, $state){
-                    return $auth.then(angular.noop, function(){
-                        return $state.go('admin-signin');
-                    });
-                }]
-            }
+            templateUrl : '/templates/admin/post.html'
         })
         .state('admin-edit-post', {
             url : '/admin/edit-post/:postId',
@@ -146,5 +139,15 @@ angular
         headers : {
             authToken : window.localStorage.getItem('authToken') || null
         }
+    });
+}]);
+
+
+// Add categories to $rootScope
+angular
+.module('gitmeet')
+.run(['$rootScope', '$http', function($rootScope, $http){
+    $http.get('/api/categories').then(function(res){
+        $rootScope.categories = res.data;
     });
 }]);
