@@ -27,6 +27,7 @@
     "angular-timeago": "^0.4.3",
     "lodash": "^4.13.1",
     "angular-disqus": "^1.1.0",
-    "ui-router-metatags": "^1.0.3"
+    "ui-router-metatags": "^1.0.3",
+    "ng-buffer-dropzone": "ngdropzone-buffer#^1.0.0"
   }
 }

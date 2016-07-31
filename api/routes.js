@@ -3,13 +3,28 @@ const
     mongoose    	=       require('mongoose'),
     bcryptjs    	=       require('bcryptjs'),
     randomstring    =       require('randomstring'),
-    _    			=       require('lodash')
+    _               =       require('lodash'),
+    sharper    		=       require('sharper')
 ;
 
 var router = express.Router();
+var hosts = require('./constants/hosts');
+var dir = require('./constants/dir');
 var categories = require('./constants/categories');
 var postModel = require('./schemas/post');
 var adminModel = require('./schemas/admin');
+
+var Sharper = sharper({
+    location : dir.upload + '/',
+    sizes : [
+        {suffix : 'xlg', width : 1200, height : 1200},
+        {suffix : 'lg', width : 800, height : 800},
+        {suffix : 'md', width : 500, height : 500}
+    ],
+    max : true,
+    withoutEnlargement : true,
+    quality : 100
+});
 
 
 /**********************************************************/
@@ -37,8 +52,20 @@ var checkAdmin = function(req, res, next){
 /**********************************************************/
 
 
+/*
+ *  Admin
+**/
+
+// upload a image and return url
+router.post('/image', checkAdmin, Sharper, function(err, req, res, next){
+    res.status(500).send('upload failed...');
+}, function(req, res){
+    res.send(hosts.protocol + hosts.www + '/upload/' + res.sharper.dir + '/' + res.sharper.filename + '.lg.jpg');
+});
+
 // Check if admin is signed in
 router.get('/admin/check-session', checkAdmin, function(req, res){
+    // return 200 status code for session exists
     res.sendStatus(200);
 });
 
@@ -124,9 +151,13 @@ router.delete('/admin/post/:postId', checkAdmin, function(req, res){
 
 /**********************************************************/
 
+/*
+ *  Public
+**/
 
 // Router
 router.get('/categories', function(req, res){
+    // return categories array
     res.json(categories);
 });
 
@@ -148,13 +179,18 @@ router.get('/post/:postId', function(req, res){
 router.get('/posts', function(req, res){
     
     // Pick acceptable value from query string params
-    var query = _.pick(req.query, ['postId', 'nPostId', 'category', 'tags', 'search']);
+    var query = _.pick(req.query, ['postId', 'nPostId', 'category', 'nCategories', 'tags', 'search']);
     
     // Change values based on key
     $query = _.mapValues(query, function(val, key){
         // ignore a postId
         if(key == 'nPostId') return {
-			$ne : val
+            $ne : val
+        };
+
+        // ignore categories
+        if(key == 'nCategories') return {
+			$nin : (_.isArray(val)) ? val : _.castArray(val)
         };
 
         // match by tags in array
@@ -186,6 +222,7 @@ router.get('/posts', function(req, res){
     // Change keys
     $query = _.mapKeys($query, function(val, key){
         if(key == 'nPostId') return 'postId';
+        if(key == 'nCategories') return 'category';
         if(key == 'search') return '$or';
         return key;
     });

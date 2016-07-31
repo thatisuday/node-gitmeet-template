@@ -1,6 +1,6 @@
 {
   "name": "gitmeet-template",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simple plug-n-play markdown blog website for node.js",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/thatisuday/gitmeet-template#readme",
   "dependencies": {
+    "async": "^2.0.0",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^3.1.0",
@@ -28,16 +33,12 @@
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.4",
-    "async": "^2.0.0",
-    "bcryptjs": "^2.3.0",
-    "body-parser": "^1.15.2",
-    "chai": "^3.5.0",
-    "express": "^4.14.0",
     "lodash": "^4.13.1",
     "mongoose": "^4.5.4",
     "multer": "^1.1.0",
     "openurl": "^1.1.1",
     "randomstring": "^1.1.5",
+    "sharper": "^1.0.2",
     "sitemap": "^1.8.0",
     "time-ago": "^0.1.0"
   }

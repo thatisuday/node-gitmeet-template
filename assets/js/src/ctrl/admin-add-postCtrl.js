@@ -37,4 +37,23 @@ angular
     		alert(err.data);
     	});
     }
+
+
+    /*
+     *  dropzone
+    **/
+    $scope.dzOptions = {
+        url : '/api/image',
+        previewsContainer : false,
+        clickable : '#add-image',
+        headers : {
+            authToken :  window.localStorage.getItem('authToken')
+        }
+    };
+
+    $scope.dzCallbacks = {
+        'success' : function(file, url){
+            window.prompt('copy url', url);
+        }
+    };
 }]);

@@ -29,9 +29,9 @@ Simple plug-n-play markdown blog website for node.js
 --
 
 # Customize / Build
+-  edit constants in `api/constants`
 -  edit `index.html`
 -  edit files in `templates/__unmin`
--  edit menu tabs in `api/constants/categories.js`
 -  open cmd/terminal 
 -  install gulp globally `npm install -g gulp`
 -  build using `gulp build` command.

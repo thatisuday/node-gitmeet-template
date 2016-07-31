@@ -32,6 +32,9 @@ app.use('/assets', express.static(__dirname + '/assets'), function(req, res){
 app.use('/templates', express.static(__dirname + '/templates'), function(req, res){
     res.sendStatus(404);
 });
+app.use('/upload', express.static(__dirname + '/upload'), function(req, res){
+    res.sendStatus(404);
+});
 
 
 // API

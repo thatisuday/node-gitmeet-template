@@ -1,9 +1,22 @@
+<div>
+	<button type="button" id="add-image" class="ui mini button">
+		upload image and get url
+	</button>
+
+	<div><small>You can also paste on the page</small></div>
+</div>
+
+<br/>
+<br/>
+
 <div class="ui top attached tabular menu">
 	<a class="active item" data-tab="first">Code</a>
 	<a class="item" data-tab="second">Preview</a>
 </div>
+
 <div class="ui bottom attached active tab segment" data-tab="first">
 	<form class="ui form" ng-submit="savePost()">
+
 		<div class="field">
 			<label>Post title</label>
 			<input type="text" ng-model="postData.title" required="">
@@ -35,13 +48,17 @@
 
 		<div class="field clearfix">
 			<button type="submit" class="ui small green button left floated">
-				Update now!
+				Submit
 			</button>
+
 			<button type="button" ng-if="isEdit" ng-click="deletePost();" class="ui mini red button right floated">
 				Delete this post
 			</button>
 		</div>
 	</form>
+
+	<ng-dropzone ng-hide="true" options="dzOptions" callbacks="dzCallbacks"></ng-dropzone>
+</div>
 </div>
 <div class="ui bottom attached tab segment" data-tab="second">
 	<md ng-model="postData.content"></md>

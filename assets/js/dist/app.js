@@ -7,6 +7,9 @@
 **/
 
 
+// Do not auto discover dropzones
+Dropzone.autoDiscover = false;
+
 // Create gitmeet module
 angular.module(
     'gitmeet',
@@ -17,9 +20,12 @@ angular.module(
         'yaru22.angular-timeago',
         'thatisuday.ui-stater',
         'ngDisqus',
-        'ui.router.metatags'
+        'ui.router.metatags',
+        'thatisuday.dropzone'
     ]
 );
+
+/****************************************************************/
 
 // Configure dependencies
 angular
@@ -160,6 +166,7 @@ angular
     }]
 );
 
+/****************************************************************/
 
 // Custom directives
 angular
@@ -172,6 +179,7 @@ angular
     }
 });
 
+/****************************************************************/
 
 // Auth check service
 angular
@@ -186,6 +194,14 @@ angular
     });
 }]);
 
+/****************************************************************/
+
+// constants
+angular
+.module('gitmeet')
+.constant('__home_ignore_categories', ['life', 'news']);
+
+/****************************************************************/
 
 // App run block
 angular

@@ -1,6 +1,8 @@
 angular
 .module('gitmeet')
-.controller('posts', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
+.controller('posts',
+	['__home_ignore_categories', '$scope', '$http', '$state', '$stateParams',
+	function(__home_ignore_categories, $scope, $http, $state, $stateParams){
 
 	// score posts in `posts` var
 	$scope.posts = [];
@@ -28,6 +30,11 @@ angular
 	// if search page, add search to the request
 	if(_.has($stateParams, 'search')){
 		$scope.params.search = $stateParams.search;
+	}
+
+	// if home controller, remove `life` & `news` category from posts
+	if($state.current.name == 'home'){
+		$scope.params.nCategories = __home_ignore_categories;
 	}
 
 	// post loader ajax function
