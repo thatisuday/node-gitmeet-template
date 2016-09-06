@@ -1,4 +1,6 @@
-# GitMeet-template [![build status](https://travis-ci.org/thatisuday/gitmeet-template.svg?branch=master)](https://travis-ci.org/thatisuday/gitmeet-template)
+# GitMeet-template [![Build Status](https://img.shields.io/travis/thatisuday/gitmeet-template.svg?style=flat-square)](https://travis-ci.org/thatisuday/gitmeet-template) [![npm downloads](https://img.shields.io/npm/dt/gitmeet-template.svg?style=flat-square)](https://www.npmjs.com/package/gitmeet-template) [![npm version](https://img.shields.io/npm/v/gitmeet-template.svg?style=flat-square)](https://www.npmjs.com/package/gitmeet-template) [![npm dependencies](https://img.shields.io/david/thatisuday/gitmeet-template.svg?style=flat-square)](https://www.npmjs.com/package/gitmeet-template)
+
+
 Simple plug-n-play markdown blog website for node.js
 
 > This template was created for my personal blog at [gitmeet.com](http://gitmeet.com). But due to it's portability and markdown writing format, I guess this help you set up your personal blog within 5 mins.
